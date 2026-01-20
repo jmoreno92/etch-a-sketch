@@ -19,8 +19,26 @@ function createGrid(gridSize) {
         square.style.width = `${SquareSize}px`;
         square.style.height = `${SquareSize}px`;
 
+        // Initialize opacity
+        square.dataset.opacity = 0;
+
         square.addEventListener('mouseenter', () => {
-            square.style.backgroundColor = 'black';
+
+            // square.style.backgroundColor = 'black';
+
+            let currentOpacity = Number(square.dataset.opacity);
+            if (currentOpacity < 1) {
+                currentOpacity += 0.1;
+                square.dataset.opacity = currentOpacity;
+                // Random RGB color
+                // const r = Math.floor(Math.random() * 256);
+                // const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                square.style.opacity = currentOpacity;
+            }
+
+
         });
 
         container.appendChild(square);
